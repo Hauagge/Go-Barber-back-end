@@ -10,13 +10,13 @@ export default class DonationController {
   public async create(request: Request, response: Response): Promise<Response> {
     try {
       const { user_id } = request.params;
-      const { provider_id, value } = request.body;
+      const { supplier_id, value } = request.body;
 
       const createDonation = container.resolve(CreateDonationService);
 
       const user = await createDonation.execute({
         user_id,
-        provider_id,
+        supplier_id,
         value,
       });
 

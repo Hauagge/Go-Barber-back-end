@@ -13,7 +13,10 @@ import IUsersTokensRepository from '@modules/users/repositories/IUSersTokenRepos
 import UserTokensRepository from '@modules/users/Infra/typeorm/repositories/UserTokensRepository';
 
 import INotificationsRepository from '@modules/notifications/repositories/INotificationsRepository';
-import NotificationsRepository from '@modules/notifications/infra/typeorm/repositories/NotificationRepositories';
+import NotificationsRepository from '@modules/notifications/Infra/typeorm/repositories/NotificationRepositories';
+
+import ISupplierRepository from '@modules/suppliers/repositories/ISupplierRepository';
+import SupplierRepository from '@modules/suppliers/Infra/typeorm/repositories/SupplierRepository';
 
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
@@ -32,4 +35,9 @@ container.registerSingleton<INotificationsRepository>(
 container.registerSingleton<IDonationRepository>(
   'DonationRepository',
   DonationRepository,
+);
+
+container.registerSingleton<ISupplierRepository>(
+  'SupplierRepository',
+  SupplierRepository,
 );

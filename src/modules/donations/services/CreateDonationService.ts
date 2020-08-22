@@ -9,7 +9,7 @@ import Donation from '../Infra/typeorm/entities/Donation';
 
 interface IRequest {
   user_id: string;
-  provider_id: string;
+  supplier_id: string;
   value: number;
 }
 @injectable()
@@ -27,7 +27,7 @@ class CreateDonationService {
 
   public async execute({
     user_id,
-    provider_id,
+    supplier_id,
     value,
   }: IRequest): Promise<Donation> {
     const checkUserExist = await this.userRepository.findById(user_id);
@@ -37,7 +37,7 @@ class CreateDonationService {
 
     const donation = await this.donationRepository.create({
       user_id,
-      provider_id,
+      supplier_id,
       value,
     });
 

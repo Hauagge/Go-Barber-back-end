@@ -9,6 +9,7 @@ import {
 } from 'typeorm';
 
 import User from '@modules/users/Infra/typeorm/entities/User';
+import Supplier from '@modules/suppliers/Infra/typeorm/entities/Supplier';
 
 @Entity('donations')
 class Donation {
@@ -23,7 +24,11 @@ class Donation {
   user: User;
 
   @Column()
-  provider_id: string;
+  supplier_id: string;
+
+  @ManyToOne(() => Supplier, supplier => supplier.donation, { eager: true })
+  @JoinColumn({ name: 'provider_id' })
+  supplier: Supplier;
 
   @Column()
   value: number;

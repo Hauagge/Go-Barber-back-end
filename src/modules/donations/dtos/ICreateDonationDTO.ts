@@ -1,5 +1,5 @@
-export default interface ICreateUserDTO {
+export default interface ICreateDonationDTO {
   user_id: string;
-  provider_id: string;
+  supplier_id: string;
   value: number;
 }

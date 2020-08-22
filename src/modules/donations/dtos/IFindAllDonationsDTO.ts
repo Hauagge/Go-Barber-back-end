@@ -1,3 +1,3 @@
-export default interface IFindAllProviderDTO {
+export default interface IFindAllDonationDTO {
   user_id: string;
 }

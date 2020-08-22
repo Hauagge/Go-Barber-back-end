@@ -3,7 +3,7 @@ import { getRepository, Repository } from 'typeorm';
 import IDonationRepository from '@modules/donations/repositories/IDonationRepository';
 import ICreateDonationDTO from '@modules/donations/dtos/ICreateDonationDTO';
 // import IFindAllDonation from '@modules/donations/dtos/IFindAllDonationsDTO';
-
+import mercadopago from 'mercadopago';
 import Donation from '../entities/Donation';
 
 class DonationRepository implements IDonationRepository {
@@ -25,12 +25,16 @@ class DonationRepository implements IDonationRepository {
 
   public async create({
     user_id,
-    provider_id,
+    supplier_id,
     value,
   }: ICreateDonationDTO): Promise<Donation> {
+    mercadopago.configure({
+      sandbox: true,
+      access_token: process.env.ACCESS_TOKEN_TEST,
+    });
     const donation = this.donationRepository.create({
       user_id,
-      provider_id,
+      supplier_id,
       value,
     });
     await this.donationRepository.save(donation);
