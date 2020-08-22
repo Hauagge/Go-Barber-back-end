@@ -13,7 +13,7 @@ donationsRouter.post(
   celebrate({
     [Segments.BODY]: {
       user_id: Joi.string(),
-      provider_id: Joi.string().required(),
+      supplier_id: Joi.string().required(),
       value: Joi.number().required(),
     },
   }),

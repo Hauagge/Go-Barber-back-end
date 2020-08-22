@@ -27,7 +27,7 @@ class Donation {
   supplier_id: string;
 
   @ManyToOne(() => Supplier, supplier => supplier.donation, { eager: true })
-  @JoinColumn({ name: 'provider_id' })
+  @JoinColumn({ name: 'supplier_id' })
   supplier: Supplier;
 
   @Column()

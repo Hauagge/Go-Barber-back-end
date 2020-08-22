@@ -32,6 +32,28 @@ class DonationRepository implements IDonationRepository {
       sandbox: true,
       access_token: process.env.ACCESS_TOKEN_TEST,
     });
+
+    mercadopago.payment
+      .create({
+        description: 'Donation',
+        transaction_amount: value,
+        payment_method_id: 'rapipago',
+        payer: {
+          email: 'test_user_3931694@testuser.com',
+
+          identification: {
+            type: 'DNI',
+            number: '34123123',
+          },
+        },
+      })
+      .then(function (mpResponse) {
+        console.log(mpResponse);
+      })
+      .catch(function (mpError) {
+        console.log(mpError);
+      });
+
     const donation = this.donationRepository.create({
       user_id,
       supplier_id,
