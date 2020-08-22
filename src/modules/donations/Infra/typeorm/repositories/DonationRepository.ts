@@ -3,7 +3,7 @@ import { getRepository, Repository } from 'typeorm';
 import IDonationRepository from '@modules/donations/repositories/IDonationRepository';
 import ICreateDonationDTO from '@modules/donations/dtos/ICreateDonationDTO';
 // import IFindAllDonation from '@modules/donations/dtos/IFindAllDonationsDTO';
-import mercadopago from 'mercadopago';
+// import mercadopago from 'mercadopago';
 import Donation from '../entities/Donation';
 
 class DonationRepository implements IDonationRepository {
@@ -28,31 +28,31 @@ class DonationRepository implements IDonationRepository {
     supplier_id,
     value,
   }: ICreateDonationDTO): Promise<Donation> {
-    mercadopago.configure({
-      sandbox: true,
-      access_token: process.env.ACCESS_TOKEN_TEST,
-    });
+    // mercadopago.configure({
+    //   sandbox: true,
+    //   access_token: process.env.ACCESS_TOKEN_TEST,
+    // });
 
-    mercadopago.payment
-      .create({
-        description: 'Donation',
-        transaction_amount: value,
-        payment_method_id: 'rapipago',
-        payer: {
-          email: 'test_user_3931694@testuser.com',
+    // mercadopago.payment
+    //   .create({
+    //     description: 'Donation',
+    //     transaction_amount: value,
+    //     payment_method_id: 'rapipago',
+    //     payer: {
+    //       email: 'test_user_3931694@testuser.com',
 
-          identification: {
-            type: 'DNI',
-            number: '34123123',
-          },
-        },
-      })
-      .then(function (mpResponse) {
-        console.log(mpResponse);
-      })
-      .catch(function (mpError) {
-        console.log(mpError);
-      });
+    //       identification: {
+    //         type: 'DNI',
+    //         number: '34123123',
+    //       },
+    //     },
+    //   })
+    //   .then(function (mpResponse) {
+    //     console.log(mpResponse);
+    //   })
+    //   .catch(function (mpError) {
+    //     console.log(mpError);
+    //   });
 
     const donation = this.donationRepository.create({
       user_id,
