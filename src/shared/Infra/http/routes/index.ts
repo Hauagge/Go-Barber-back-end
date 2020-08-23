@@ -11,8 +11,8 @@ import SupplierRouter from '@modules/suppliers/Infra/http/routes/supplier.routes
 const routes = Router();
 
 routes.use('/directdonation', DonationsRouter);
-routes.use('/singup', userRouter);
-routes.use('/singin', sessionsRouter);
+routes.use('/signup', userRouter);
+routes.use('/', sessionsRouter);
 routes.use('/password', passwordRouter);
 routes.use('/suppliers', SupplierRouter);
 
