@@ -5,6 +5,7 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   OneToMany,
+  JoinColumn,
 } from 'typeorm';
 
 import Donation from '@modules/donations/Infra/typeorm/entities/Donation';
@@ -16,10 +17,6 @@ class Supplier {
 
   @Column()
   name: string;
-
-  // @ManyToOne(() => User, user => user.donation, { eager: true })
-  // @JoinColumn({ name: 'user_id' })
-  // user: User;
 
   @Column()
   postCode: string;
@@ -37,6 +34,7 @@ class Supplier {
   phoneNumber: string;
 
   @OneToMany(() => Donation, donation => donation.supplier)
+  @JoinColumn()
   donation: Donation;
 
   @CreateDateColumn()

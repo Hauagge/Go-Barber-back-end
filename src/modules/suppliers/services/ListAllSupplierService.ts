@@ -17,13 +17,13 @@ class ListAllSuppliersService {
   ) {}
 
   public async execute(): Promise<Supplier[]> {
-    const cachKey = 'listSupplier';
-    let supplier = await this.cachProvider.recover<Supplier[]>(cachKey);
-    if (!supplier) {
-      supplier = await this.supplierRepository.findAllSuppliers();
+    // const cachKey = 'listSupplier';
+    // let supplier = await this.cachProvider.recover<Supplier[]>(cachKey);
+    // if (!supplier) {
+    const supplier = await this.supplierRepository.findAllSuppliers();
 
-      await this.cachProvider.save(cachKey, supplier);
-    }
+    // await this.cachProvider.save(cachKey, supplier);
+    // }
 
     return supplier;
   }

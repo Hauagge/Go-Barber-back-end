@@ -46,7 +46,7 @@ class CreateDonationService {
       phoneNumber,
     });
 
-    await this.cachProvider.invalidatePrefix('listSupplier');
+    // await this.cachProvider.invalidatePrefix('listSupplier');
 
     return suppllier;
   }

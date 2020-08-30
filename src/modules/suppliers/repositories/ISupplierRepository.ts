@@ -4,8 +4,8 @@ import ICreateSuppliersDTO from '../dtos/ICreateSuppliersDTO';
 
 export default interface ISupplierRepository {
   findAllSuppliers(): Promise<Supplier[]>;
-  // findById(id: string): Promise<Donation | undefined>;
-  // findByEmail(email: string): Promise<User | undefined>;
   create(data: ICreateSuppliersDTO): Promise<Supplier>;
-  // save(user: User): Promise<User>;
 }
+// findById(id: string): Promise<Donation | undefined>;
+// findByEmail(email: string): Promise<User | undefined>;
+// save(user: User): Promise<User>;

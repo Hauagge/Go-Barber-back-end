@@ -4,10 +4,10 @@ import { celebrate, Segments, Joi } from 'celebrate';
 import ensureAuthenticated from '@modules/users/Infra/http/middlewares/ensureAuthenticated';
 import SupplierController from '../controllers/SupplierController';
 
-const donationsRouter = Router();
-const donationController = new SupplierController();
+const SupplierRouter = Router();
+const supplierController = new SupplierController();
 
-donationsRouter.post(
+SupplierRouter.post(
   '/',
   celebrate({
     [Segments.BODY]: {
@@ -19,9 +19,9 @@ donationsRouter.post(
       phoneNumber: Joi.string().required(),
     },
   }),
-  donationController.create,
+  supplierController.create,
 );
 
-donationsRouter.get('/', ensureAuthenticated, donationController.show);
+SupplierRouter.get('/', ensureAuthenticated, supplierController.show);
 
-export default donationsRouter;
+export default SupplierRouter;

@@ -23,7 +23,6 @@ export default class CreateSupplier1597963077225 implements MigrationInterface {
             name: 'postCode',
             type: 'varchar',
             isNullable: false,
-            isUnique: true,
           },
           {
             name: 'UF',

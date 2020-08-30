@@ -13,16 +13,6 @@ class SupplierRepository implements ISupplierRepository {
     this.supplierRepository = getRepository(Supplier);
   }
 
-  // public async findById(id: string): Promise<Donation | undefined> {
-  //   const user = await this.ormRepository.findOne(id);
-  //   return user;
-  // }
-
-  // public async findByEmail(email: string): Promise<Donation | undefined> {
-  //   const user = await this.ormRepository.findOne({ where: { email } });
-  //   return user;
-  // }
-
   public async create({
     name,
     postCode,
@@ -44,14 +34,12 @@ class SupplierRepository implements ISupplierRepository {
     return supplier;
   }
 
-  // public async save(user: Donation): Promise<User> {
-  //   return this.ormRepository.save(user);
-  // }
-
   public async findAllSuppliers(): Promise<Supplier[]> {
-    const donations = await this.supplierRepository.find();
+    const suppliers = await this.supplierRepository.find();
 
-    return donations;
+    console.log(suppliers);
+
+    return suppliers;
   }
 }
 export default SupplierRepository;

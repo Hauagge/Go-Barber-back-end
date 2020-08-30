@@ -4,7 +4,7 @@ import { classToClass } from 'class-transformer';
 
 import CreateSupplierService from '@modules/suppliers/services/CreateSupplierService';
 
-import ListAllSuppliersService from '@modules/suppliers/services/ListAllSupplier';
+import ListAllSupplierService from '@modules/suppliers/services/ListAllSupplierService';
 
 export default class DonationController {
   public async create(request: Request, response: Response): Promise<Response> {
@@ -13,7 +13,7 @@ export default class DonationController {
 
       const createSupplier = container.resolve(CreateSupplierService);
 
-      const user = await createSupplier.execute({
+      const supplier = await createSupplier.execute({
         name,
         postCode,
         UF,
@@ -22,16 +22,14 @@ export default class DonationController {
         phoneNumber,
       });
 
-      return response.json(classToClass(user));
+      return response.json(classToClass(supplier));
     } catch (err) {
       return response.status(400).json({ error: err.message });
     }
   }
 
   public async show(request: Request, response: Response): Promise<Response> {
-    // const { id } = request.params;
-
-    const listSupplier = container.resolve(ListAllSuppliersService);
+    const listSupplier = container.resolve(ListAllSupplierService);
 
     const suppliers = await listSupplier.execute();
 
